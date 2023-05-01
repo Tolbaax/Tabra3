@@ -23,7 +23,7 @@ class CustomCard extends StatelessWidget {
         height: context.height * 0.17,
         width: context.width * 0.28,
         decoration: BoxDecoration(
-          border: Border.all(color: AppColors.primary),
+          border: Border.all(color: AppColors.hint),
           borderRadius: BorderRadius.circular(10.0),
         ),
         child: Column(

@@ -70,7 +70,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     child: ElevatedButton(
                       onPressed: () {
                         if (pageIndex >= 2) {
-                          goToLayout();
+                          goToLogin();
                         } else {
                           pageController.nextPage(
                             duration: const Duration(milliseconds: 300),
@@ -94,8 +94,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     );
   }
 
-  void goToLayout() {
+  void goToLogin() {
     CacheManager.cacheIsBoarding();
-    Navigator.pushReplacementNamed(context, Routes.layout);
+    Navigator.pushReplacementNamed(context, Routes.login);
   }
 }

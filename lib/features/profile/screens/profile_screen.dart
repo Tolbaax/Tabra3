@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:tabra3/core/functions/app_dialogs.dart';
 import 'package:tabra3/core/utils/app_colors.dart';
 import 'package:tabra3/core/utils/assets_manager.dart';
 import 'package:tabra3/core/utils/media_query_values.dart';
@@ -137,7 +138,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 SizedBox(
                   height: context.height * 0.062,
                   child: ListTile(
-                    onTap: () {},
+                    onTap: () => AppDialogs.showLogOutDialog(context),
                     title: const Text(
                       'تسجيل الخروج',
                       style: TextStyle(

@@ -13,4 +13,13 @@ class ImageAssets {
   static const String person2 = '$imgPath/person2.jpg';
   static const String person3 = '$imgPath/person3.jpg';
   static const String bloodDrop = '$imgPath/blood_drop.png';
+  static const String login = '$imgPath/login.svg';
+  static const String register = '$imgPath/register.svg';
+
+
+  //Carousal
+  static const String donation1 = '$imgPath/donation1.jpg';
+  static const String donation2 = '$imgPath/donation2.png';
+  static const String donation3 = '$imgPath/donation3.jpg';
+  static const String donation4 = '$imgPath/donation4.jpg';
 }

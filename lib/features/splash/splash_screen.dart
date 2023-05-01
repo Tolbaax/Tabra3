@@ -19,11 +19,11 @@ class _SplashScreenState extends State<SplashScreen>
   late final AnimationController _controller;
 
   // use shared preferences to open app in right screen only
-  final isBoarding = CacheHelper.getData(key: "AppStrings.isBoarding");
+  final isBoarding = CacheHelper.getData(key: AppStrings.isBoarding);
 
   _goNext() {
     if (isBoarding != null) {
-      Navigator.pushReplacementNamed(context, Routes.layout);
+      Navigator.pushReplacementNamed(context, Routes.login);
     } else {
       Navigator.pushReplacementNamed(context, Routes.onBoarding);
     }
@@ -56,12 +56,11 @@ class _SplashScreenState extends State<SplashScreen>
                 ..duration = composition.duration
                 ..forward().then(
                   (value) {
-                   _goNext();
+                    _goNext();
                   },
                 );
             },
           ),
-
         ],
       ),
     );

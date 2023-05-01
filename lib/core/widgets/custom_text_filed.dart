@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../utils/app_colors.dart';
 
@@ -42,9 +43,12 @@ class CustomTextFiled extends StatelessWidget {
       onTap: onTab,
       maxLines: keyboardType == TextInputType.multiline ? null : 1,
       validator: validator,
-      style: const TextStyle(color: Colors.black, fontSize: 12.0),
+      style: TextStyle(color: Colors.black, fontSize: 14.0.sp),
       decoration: InputDecoration(
-        contentPadding: const EdgeInsets.all(10.0),
+        contentPadding: EdgeInsetsDirectional.symmetric(
+          vertical: 7.5.sp,
+          horizontal: 16.0.sp,
+        ),
         hintText: hintText,
         labelText: labelText,
         labelStyle: TextStyle(
@@ -73,14 +77,16 @@ class CustomTextFiled extends StatelessWidget {
               )
             : null,
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12.0),
-          borderSide: BorderSide(color: AppColors.primary),
+          borderRadius: BorderRadius.circular(20.0.r),
+          borderSide: BorderSide(color: AppColors.hint),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12.0),
-          borderSide: BorderSide(color: AppColors.primary),
+          borderRadius: BorderRadius.circular(20.0.r),
+          borderSide: BorderSide(color: AppColors.hint),
         ),
       ),
     );
   }
 }
+
+

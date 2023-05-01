@@ -30,7 +30,7 @@ class UrgentCaseCard extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10.0),
               border: Border.all(
-                color: AppColors.primary,
+                color: AppColors.hint,
                 width: 1.2,
               ),
             ),

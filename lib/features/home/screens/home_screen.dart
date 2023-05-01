@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:tabra3/config/routes.dart';
 import 'package:tabra3/core/utils/app_strings.dart';
 import 'package:tabra3/core/utils/assets_manager.dart';
 import 'package:tabra3/core/utils/media_query_values.dart';
-import 'package:tabra3/core/widgets/custom_button.dart';
-import 'package:tabra3/core/widgets/custom_text_filed.dart';
-import 'package:tabra3/features/home/screens/urgent_cases_list.dart';
 import 'package:tabra3/features/home/widgets/custom_card.dart';
-import 'package:tabra3/features/home/widgets/header.dart';
+import 'package:tabra3/features/home/widgets/custom_carusoal_slider.dart';
+import 'package:tabra3/features/home/widgets/home_appbar.dart';
 import 'package:tabra3/features/home/widgets/urgent_case_card.dart';
 import 'package:tabra3/models/usrgent_case_model.dart';
 
@@ -18,7 +17,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(toolbarHeight: 0.0),
+      appBar: const HomeAppBar(),
       body: Directionality(
         textDirection: TextDirection.rtl,
         child: Padding(
@@ -29,36 +28,9 @@ class HomeScreen extends StatelessWidget {
           ),
           child: Column(
             children: [
-              const HomeHeader(),
+              const CustomCarousalSlider(),
               SizedBox(
-                height: context.height * 0.015,
-              ),
-              CustomTextFiled(
-                hintText: AppStrings.selectHospital,
-                suffixIcon: Icons.location_on_outlined,
-                readOnly: true,
-                onTab: () {},
-              ),
-              SizedBox(
-                height: context.height * 0.015,
-              ),
-              CustomTextFiled(
-                hintText: AppStrings.selectBloodBank,
-                readOnly: true,
-                suffixIcon: Icons.bloodtype_rounded,
-                onTab: () {},
-              ),
-              SizedBox(
-                height: context.height * 0.02,
-              ),
-              CustomButton(
-                onTab: () {
-                  Navigator.pushNamed(context, Routes.searchDonate);
-                },
-                text: AppStrings.donationRequest,
-              ),
-              SizedBox(
-                height: context.height * 0.02,
+                height: 15.0.h,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -87,7 +59,7 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
               SizedBox(
-                height: context.height * 0.016,
+                height: context.height * 0.02,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

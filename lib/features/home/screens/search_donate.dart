@@ -6,7 +6,8 @@ import 'package:tabra3/core/widgets/custom_button.dart';
 import 'package:tabra3/core/widgets/custom_text_filed.dart';
 
 class SearchDonate extends StatefulWidget {
-  const SearchDonate({Key? key}) : super(key: key);
+  final String text;
+  const SearchDonate({Key? key, required this.text}) : super(key: key);
 
   @override
   State<SearchDonate> createState() => _SearchDonateState();
@@ -28,7 +29,7 @@ class _SearchDonateState extends State<SearchDonate> {
               color: Colors.black,
             ),
           ),
-          title: const Text(AppStrings.searchDonate),
+          title:  Text(widget.text),
         ),
         body: Padding(
           padding: const EdgeInsetsDirectional.symmetric(horizontal: 20.0),

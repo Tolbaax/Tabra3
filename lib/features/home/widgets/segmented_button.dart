@@ -26,7 +26,7 @@ class _CustomSegmentedButtonState extends State<CustomSegmentedButton> {
             height: context.height * 0.044,
             width: context.width * 0.43,
             decoration: BoxDecoration(
-                color: index == 0 ? AppColors.primary : Colors.white,
+                color: index == 0 ? AppColors.primary.withOpacity(0.6) : Colors.white,
                 borderRadius: BorderRadius.only(
                   bottomRight: Radius.circular(index == 0 ? 10 : 0),
                   bottomLeft: Radius.circular(index == 0 ? 0 : 10),
@@ -35,7 +35,7 @@ class _CustomSegmentedButtonState extends State<CustomSegmentedButton> {
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: AppColors.primary,
+                    color: AppColors.hint,
                     blurRadius: 0.1,
                   ),
                 ]),
@@ -43,7 +43,7 @@ class _CustomSegmentedButtonState extends State<CustomSegmentedButton> {
               child: Text(
                 index == 0 ? AppStrings.donateNow : AppStrings.showMap,
                 style: TextStyle(
-                  color: index == 0 ? Colors.white : AppColors.primary,
+                  color: index == 0 ? Colors.white : Colors.black,
                   fontSize: 16.5,
                 ),
               ),

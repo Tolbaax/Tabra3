@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:tabra3/core/utils/app_colors.dart';
 import 'package:tabra3/core/utils/app_strings.dart';
 import 'package:tabra3/features/blood_patient/blood_patient.dart';
 import 'package:tabra3/features/donors/screens/donors_screen.dart';
 import 'package:tabra3/features/home/screens/home_screen.dart';
 import 'package:tabra3/features/profile/screens/profile_screen.dart';
 import 'package:tabra3/features/tips/tips.dart';
-
 
 class LayoutScreen extends StatefulWidget {
   const LayoutScreen({Key? key}) : super(key: key);

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tabra3/config/app_theme.dart';
 import 'package:tabra3/config/routes.dart';
 import 'package:tabra3/core/network/local/cache_helper.dart';
@@ -17,10 +18,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: appTheme(),
-      onGenerateRoute: AppRoutes.onGenerateRoute,
+    return ScreenUtilInit(
+      builder: (context, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: appTheme(),
+          onGenerateRoute: AppRoutes.onGenerateRoute,
+        );
+      },
     );
   }
 }

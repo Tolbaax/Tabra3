@@ -5,10 +5,12 @@ import 'package:tabra3/features/home/screens/register_urgent_cases.dart';
 import 'package:tabra3/features/home/screens/search_donate.dart';
 import 'package:tabra3/features/home/screens/urgent_cases_list.dart';
 import 'package:tabra3/features/layout/layout_screen.dart';
+import 'package:tabra3/features/login/login_screen.dart';
 import 'package:tabra3/features/onboarding/screens/onboarding_screen.dart';
 
 import '../core/utils/app_strings.dart';
 import '../features/home/screens/register_blood_patient.dart';
+import '../features/register/register_screen.dart';
 import '../features/splash/splash_screen.dart';
 
 class Routes {
@@ -51,9 +53,10 @@ class AppRoutes {
         );
 
       case Routes.searchDonate:
+        final String text = settings.arguments as String;
         return PageTransition(
           type: PageTransitionType.fade,
-          child: const SearchDonate(),
+          child: SearchDonate(text: text),
         );
 
       case Routes.newDonor:
@@ -72,6 +75,18 @@ class AppRoutes {
         return PageTransition(
           type: PageTransitionType.fade,
           child: const RegisterBloodPatient(),
+        );
+
+      case Routes.login:
+        return PageTransition(
+          type: PageTransitionType.fade,
+          child: const LoginScreen(),
+        );
+
+      case Routes.register:
+        return PageTransition(
+          type: PageTransitionType.fade,
+          child: const RegisterScreen(),
         );
 
       default:

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:tabra3/core/utils/media_query_values.dart';
 import 'package:tabra3/features/donors/widgets/donor_card.dart';
+import 'package:tabra3/features/donors/widgets/donors_appbar.dart';
 
 import '../../../core/utils/app_strings.dart';
 import '../../../models/donors_model.dart';
@@ -14,14 +15,7 @@ class DonorsScreen extends StatelessWidget {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            AppStrings.donors,
-            style: TextStyle(
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-        ),
+        appBar: const DonorAppBar(),
         body: Padding(
           padding: EdgeInsets.all(context.toPadding * 0.45),
           child: AnimationLimiter(
