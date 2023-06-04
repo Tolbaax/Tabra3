@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:tabra3/features/home/screens/register_new_donor.dart';
-import 'package:tabra3/features/home/screens/register_urgent_cases.dart';
-import 'package:tabra3/features/home/screens/search_donate.dart';
-import 'package:tabra3/features/home/screens/urgent_cases_list.dart';
-import 'package:tabra3/features/layout/layout_screen.dart';
-import 'package:tabra3/features/login/login_screen.dart';
-import 'package:tabra3/features/onboarding/screens/onboarding_screen.dart';
 
-import '../core/utils/app_strings.dart';
-import '../features/home/screens/register_blood_patient.dart';
-import '../features/register/register_screen.dart';
-import '../features/splash/splash_screen.dart';
+import '../../core/utils/app_strings.dart';
+import '../../features/presentation/view/home/screens/register_blood_patient.dart';
+import '../../features/presentation/view/home/screens/register_new_donor.dart';
+import '../../features/presentation/view/home/screens/register_urgent_cases.dart';
+import '../../features/presentation/view/home/screens/search_donate.dart';
+import '../../features/presentation/view/home/screens/urgent_cases_list.dart';
+import '../../features/presentation/view/layout/layout_screen.dart';
+import '../../features/presentation/view/login/login_screen.dart';
+import '../../features/presentation/view/onboarding/screens/onboarding_screen.dart';
+import '../../features/presentation/view/register/register_screen.dart';
+import '../../features/presentation/view/splash/splash_screen.dart';
 
 class Routes {
   static const String initialRoute = '/';
@@ -85,7 +85,7 @@ class AppRoutes {
 
       case Routes.register:
         return PageTransition(
-          type: PageTransitionType.fade,
+          type: PageTransitionType.rightToLeftWithFade,
           child: const RegisterScreen(),
         );
 
@@ -95,12 +95,21 @@ class AppRoutes {
   }
 
   static Route<dynamic> undefinedRoute() {
-    return MaterialPageRoute(
-      builder: ((context) => const Scaffold(
+    return PageRouteBuilder(
+      transitionDuration: const Duration(milliseconds: 150),
+      pageBuilder: (context, animation, secondaryAnimation) {
+        return FadeTransition(
+          opacity: animation,
+          child: const Scaffold(
             body: Center(
-              child: Text(AppStrings.noRouteFound),
+              child: Text(
+                AppStrings.noRouteFound,
+                style: TextStyle(fontWeight: FontWeight.w500),
+              ),
             ),
-          )),
+          ),
+        );
+      },
     );
   }
 }

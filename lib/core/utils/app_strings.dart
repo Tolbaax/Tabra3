@@ -1,5 +1,6 @@
 class AppStrings {
   static const String appName = 'Tabra3';
+  static const String uID = 'uID';
   static const String userHello = 'أهلا! احمد منصور';
   static const String bloodSearch = 'انت تبحث عن الدم؟';
   static const String selectHospital = 'اختر المستشفى';

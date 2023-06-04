@@ -5,7 +5,7 @@ import 'package:maps_launcher/maps_launcher.dart';
 import 'package:tabra3/core/utils/app_strings.dart';
 import 'package:tabra3/core/utils/media_query_values.dart';
 
-import '../../config/routes.dart';
+import '../../config/routes/routes.dart';
 import '../utils/app_colors.dart';
 
 class AppDialogs {
