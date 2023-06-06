@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:maps_launcher/maps_launcher.dart';
 import 'package:tabra3/core/utils/app_strings.dart';
 import 'package:tabra3/core/utils/media_query_values.dart';
@@ -9,6 +10,16 @@ import '../../config/routes/routes.dart';
 import '../utils/app_colors.dart';
 
 class AppDialogs {
+  static void showToast(
+      {required String msg, Color? color, ToastGravity? gravity}) {
+    Fluttertoast.showToast(
+      toastLength: Toast.LENGTH_LONG,
+      msg: msg,
+      backgroundColor: color ?? AppColors.primary,
+      gravity: gravity ?? ToastGravity.BOTTOM,
+    );
+  }
+
   static void showLogOutDialog(context, {VoidCallback? onPressed}) {
     showDialog(
       context: context,

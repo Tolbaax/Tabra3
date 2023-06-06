@@ -42,7 +42,7 @@ class AppStrings {
   static const String bloodPatient = 'مرضي الدم';
   static const String login = 'تسجيل الدخول';
   static const String signUp = 'انشاء حساب';
-  static const String password = 'الرقم السري';
+  static const String password = 'كلمة المرور';
   static const String dontHaveAccount = 'لا يوجد حساب؟';
   static const String haveAccount = 'يوجد حساب بالفعل؟';
   static const String name = 'الاسم';
