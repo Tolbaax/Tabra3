@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tabra3/core/functions/navigation.dart';
 
 import '../../../../../core/services/injection_container.dart';
 import '../cubit/signup_cubit.dart';
@@ -36,7 +37,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return BlocProvider.value(
       value: _cubit,
       child: BlocConsumer<SignUpCubit, SignUpStates>(
-        listener: (context, state) {},
+        listener: (context, state) {
+          if (state is SignUpSuccessState) {
+            navigatePop(context);
+          }
+        },
         builder: (context, state) {
           return Directionality(
             textDirection: TextDirection.rtl,

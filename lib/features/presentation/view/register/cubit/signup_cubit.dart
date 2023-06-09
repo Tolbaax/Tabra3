@@ -14,7 +14,6 @@ class SignUpCubit extends Cubit<SignUpStates> {
   Future<void> signUp(SignUpParams params) async {
     emit(SignUpLoadingState());
     final result = await authUseCase.signUp(params);
-
     result.fold(
       (l) => emit(SignUpErrorState()),
       (r) => emit(SignUpSuccessState()),

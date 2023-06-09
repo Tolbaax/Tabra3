@@ -11,3 +11,4 @@ class SignUpResponse {
     result = json['result'];
   }
 }
+
