@@ -20,7 +20,7 @@ class UrgentCaseModel {
 
 List<UrgentCaseModel> urgentCases = [
   UrgentCaseModel(
-    image: ImageAssets.person2,
+    image: ImageAssets.user,
     name: 'محمد طلبه',
     hospitalName: 'مستشفي المنزلة',
     date: '13/2/2023',
@@ -28,7 +28,7 @@ List<UrgentCaseModel> urgentCases = [
     phoneNumber: '01153548752',
   ),
   UrgentCaseModel(
-    image: ImageAssets.person1,
+    image: ImageAssets.user,
     name: 'احمد منصور',
     hospitalName: 'مستشفي الحياة',
     date: '15/3/2023',
@@ -36,7 +36,7 @@ List<UrgentCaseModel> urgentCases = [
     phoneNumber: '01273548752',
   ),
   UrgentCaseModel(
-    image: ImageAssets.person3,
+    image: ImageAssets.user,
     name: 'محمد صلاح',
     hospitalName: 'مستشفي الاحا',
     date: '10/10/2023',
@@ -44,7 +44,7 @@ List<UrgentCaseModel> urgentCases = [
     phoneNumber: '01125548752',
   ),
   UrgentCaseModel(
-    image: ImageAssets.person2,
+    image: ImageAssets.user,
     name: 'ابو عبده',
     hospitalName: 'مستشفي الشيماء',
     date: '18/1/2023',
@@ -52,7 +52,7 @@ List<UrgentCaseModel> urgentCases = [
     phoneNumber: '01273358752',
   ),
   UrgentCaseModel(
-    image: ImageAssets.person3,
+    image: ImageAssets.user,
     name: 'محمد طلبه',
     hospitalName: 'مستشفي المنزلة',
     date: '18/2/2020',

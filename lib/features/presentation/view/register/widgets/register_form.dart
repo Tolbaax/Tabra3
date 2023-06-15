@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tabra3/core/functions/navigation.dart';
 import 'package:tabra3/core/functions/validation.dart';
 import 'package:tabra3/core/params/signup_params.dart';
 import 'package:tabra3/features/presentation/view/register/cubit/signup_states.dart';
 
-import '../../../../../config/routes/routes.dart';
 import '../../../../../core/utils/app_strings.dart';
 import '../../../components/custom_button.dart';
 import '../../../components/custom_text_filed.dart';
@@ -84,7 +82,6 @@ class _RegisterFormState extends State<RegisterForm> {
                         password: _passwordController.text.trim(),
                       ),
                     );
-                    navigateTo(context, Routes.login);
                   }
                 },
                 text: AppStrings.signUp,

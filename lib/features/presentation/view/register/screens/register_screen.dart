@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tabra3/config/routes/routes.dart';
+import 'package:tabra3/core/functions/app_dialogs.dart';
 import 'package:tabra3/core/functions/navigation.dart';
 
 import '../../../../../core/services/injection_container.dart';
 import '../cubit/signup_cubit.dart';
 import '../cubit/signup_states.dart';
-import '../widgets/have_button.dart';
+import '../widgets/have_account_button.dart';
 import '../widgets/register_form.dart';
 import '../widgets/register_header.dart';
 
@@ -39,7 +41,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
       child: BlocConsumer<SignUpCubit, SignUpStates>(
         listener: (context, state) {
           if (state is SignUpSuccessState) {
-            navigatePop(context);
+            if (state.response.code == 1) {
+              navigateAndRemove(context, Routes.login);
+            } else {
+              AppDialogs.showToast(msg: state.response.message.toString());
+            }
           }
         },
         builder: (context, state) {
@@ -54,7 +60,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       children: [
                         RegisterHeader(),
                         RegisterForm(),
-                        HaveButton(),
+                        HaveAccountButton(),
                       ],
                     ),
                   ),

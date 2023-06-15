@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tabra3/core/params/signup_params.dart';
-import 'package:tabra3/features/domain/usecases/auth_usecase.dart';
 
+import '../../../../../core/params/signup_params.dart';
+import '../../../../domain/usecases/auth_usecase.dart';
 import 'signup_states.dart';
 
 class SignUpCubit extends Cubit<SignUpStates> {
@@ -14,9 +14,10 @@ class SignUpCubit extends Cubit<SignUpStates> {
   Future<void> signUp(SignUpParams params) async {
     emit(SignUpLoadingState());
     final result = await authUseCase.signUp(params);
+
     result.fold(
       (l) => emit(SignUpErrorState()),
-      (r) => emit(SignUpSuccessState()),
+      (response) => emit(SignUpSuccessState(response: response)),
     );
   }
 }

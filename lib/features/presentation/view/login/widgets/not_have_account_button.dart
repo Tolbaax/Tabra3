@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../config/routes/routes.dart';
+import '../../../../../core/functions/navigation.dart';
 import '../../../../../core/utils/app_strings.dart';
 
-class HaveButton extends StatelessWidget {
-  const HaveButton({Key? key}) : super(key: key);
+class NotHaveAccountButton extends StatelessWidget {
+  const NotHaveAccountButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text(AppStrings.haveAccount),
+        const Text(AppStrings.dontHaveAccount),
         TextButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
+          onPressed: () => navigateTo(context, Routes.register),
           child: const Text(
-            AppStrings.login,
+            AppStrings.signUp,
             style: TextStyle(
               fontWeight: FontWeight.w600,
             ),

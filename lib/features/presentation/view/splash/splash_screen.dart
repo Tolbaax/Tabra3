@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../../../config/routes/routes.dart';
+import '../../../../core/functions/navigation.dart';
 import '../../../../core/network/local/cache_helper.dart';
 import '../../../../core/services/injection_container.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/assets_manager.dart';
+import '../../../data/datasources/auth/auth_local_datasources.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -22,10 +24,13 @@ class _SplashScreenState extends State<SplashScreen>
   final isBoarding = sl<CacheHelper>().getData(key: AppStrings.isBoarding);
 
   _goNext() {
-    if (isBoarding != null) {
-      Navigator.pushReplacementNamed(context, Routes.login);
+    if (isBoarding != null && sl<AuthLocalDataSource>().getUser() != null) {
+      navigateAndReplace(context, Routes.layout);
+    } else if (isBoarding != null &&
+        sl<AuthLocalDataSource>().getUser() == null) {
+      navigateAndReplace(context, Routes.login);
     } else {
-      Navigator.pushReplacementNamed(context, Routes.onBoarding);
+      navigateAndReplace(context, Routes.onBoarding);
     }
   }
 

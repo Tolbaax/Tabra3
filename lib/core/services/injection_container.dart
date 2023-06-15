@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tabra3/features/presentation/view/login/cubit/login_cubit.dart';
 
 import '../../features/data/datasources/auth/auth_local_datasources.dart';
 import '../../features/data/datasources/auth/auth_remote_datasources.dart';
@@ -18,6 +19,7 @@ final sl = GetIt.instance;
 Future<void> init() async {
   // Cubit
   sl.registerLazySingleton<SignUpCubit>(() => SignUpCubit(sl()));
+  sl.registerLazySingleton<LoginCubit>(() => LoginCubit(sl()));
 
   // Core
   sl.registerLazySingleton<ApiConsumer>(() => DioConsumer(client: sl()));

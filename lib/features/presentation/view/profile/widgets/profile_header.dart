@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:tabra3/core/utils/media_query_values.dart';
 
+import '../../../../../core/services/injection_container.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/assets_manager.dart';
+import '../../../../data/datasources/auth/auth_local_datasources.dart';
 import 'custom_card.dart';
 
 class ProfileHeader extends StatelessWidget {
@@ -11,6 +13,8 @@ class ProfileHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final name = sl<AuthLocalDataSource>().getUserName();
+
     return Stack(
       alignment: Alignment.bottomCenter,
       clipBehavior: Clip.none,
@@ -30,21 +34,14 @@ class ProfileHeader extends StatelessWidget {
             children: [
               const CircleAvatar(
                 radius: 37.0,
-                backgroundImage: AssetImage(ImageAssets.person3),
+                backgroundImage: AssetImage(ImageAssets.user),
               ),
               const SizedBox(
                 height: 5.0,
               ),
-              const Text(
-                'احمد منصور',
+              Text(
+                name! ?? '',
                 style: TextStyle(color: Colors.white, fontSize: 25.0),
-              ),
-              const SizedBox(
-                height: 5.0,
-              ),
-              const Text(
-                '01014025838',
-                style: TextStyle(color: Colors.white, fontSize: 15),
               ),
               SizedBox(
                 height: context.height * 0.015,

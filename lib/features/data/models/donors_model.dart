@@ -18,28 +18,28 @@ class DonorModel {
 
 List<DonorModel> donors = [
   DonorModel(
-    image: ImageAssets.person2,
+    image: ImageAssets.user,
     donorName: 'محمد طلبه',
     phoneNumber: '01273545783',
     bloodType: 'AB+',
     gov: 'الدقهلية',
   ),
   DonorModel(
-    image: ImageAssets.person2,
+    image: ImageAssets.user,
     donorName: 'محمد طلبه',
     phoneNumber: '01273545783',
     bloodType: 'AB+',
     gov: 'الدقهلية',
   ),
   DonorModel(
-    image: ImageAssets.person2,
+    image: ImageAssets.user,
     donorName: 'محمد طلبه',
     phoneNumber: '01273545783',
     bloodType: 'AB+',
     gov: 'الدقهلية',
   ),
   DonorModel(
-    image: ImageAssets.person2,
+    image: ImageAssets.user,
     donorName: 'محمد طلبه',
     phoneNumber: '01273545783',
     bloodType: 'AB+',
