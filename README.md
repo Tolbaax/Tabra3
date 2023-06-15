@@ -11,7 +11,7 @@
 - **Donor Registration:**
 Tabra3a allows users to easily register as blood donors. Through a user-friendly interface, potential donors can provide their personal information, including contact details, blood type, and any relevant medical history. This feature helps build a database of willing donors, ensuring a readily available pool of potential contributors.
 - **Urgent Aunts Registration:**
-To address critical situations, Tabra3a offers an Urgent Aunts Registration feature. This functionality enables individuals with urgent blood-related needs, specifically aunts (aunt in Arabic is "khala"), to register their requests for blood donations. By inputting essential details such as the required blood type, medical condition, and contact information, individuals in need can seek timely assistance from potential donors.
+To address critical situations, Tabra3a offers an Urgent Aunts Registration feature. This functionality enables individuals with urgent blood-related needs, specifically aunts to register their requests for blood donations. By inputting essential details such as the required blood type, medical condition, and contact information, individuals in need can seek timely assistance from potential donors.
 - **Blood Patient Registration:**
 Tabra3a allows individuals who require blood transfusions or ongoing blood-related medical treatments to register as blood patients. This feature aids in creating a platform where patients can provide relevant information, such as their medical condition, blood type, and contact details. By doing so, they can connect with suitable donors or receive updates on potential matches when needed.
 - **Nearby Hospital and Blood Bank Locator:**
