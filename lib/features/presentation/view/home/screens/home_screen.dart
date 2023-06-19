@@ -85,9 +85,8 @@ class HomeScreen extends StatelessWidget {
                         style: Theme.of(context).textTheme.titleLarge!,
                       ),
                       GestureDetector(
-                        onTap: () {
-                          Navigator.pushNamed(context, Routes.urgentCases);
-                        },
+                        onTap: () =>
+                            Navigator.pushNamed(context, Routes.urgentCases),
                         child: Text(
                           AppStrings.seeAll,
                           style: Theme.of(context).textTheme.bodyMedium,
@@ -95,7 +94,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  AllUrgentCases(),
+                  Expanded(child: AllUrgentCases()),
                 ],
               ),
             ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:tabra3/core/utils/app_colors.dart';
 import 'package:tabra3/core/utils/media_query_values.dart';
 
@@ -23,24 +22,21 @@ class AllUrgentCases extends StatelessWidget {
           if (state.urgentCase.isEmpty) {
             return Center(child: const Text('No Urgent Cases Yet'));
           } else {
-            return Expanded(
-              child: ListView.separated(
-                itemCount: state.urgentCase.length,
-                physics: const BouncingScrollPhysics(),
-                itemBuilder: (context, index) {
-                  return AnimationLimiter(
-                    child: UrgentCaseCard(
-                      model: state.urgentCase[index],
-                      index: index,
-                    ),
-                  );
-                },
-                separatorBuilder: (context, index) {
-                  return SizedBox(
-                    height: context.height * 0.02,
-                  );
-                },
-              ),
+            return ListView.separated(
+              itemCount: state.urgentCase.length,
+              reverse: true,
+              physics: const BouncingScrollPhysics(),
+              itemBuilder: (context, index) {
+                return UrgentCaseCard(
+                  model: state.urgentCase[index],
+                  index: index,
+                );
+              },
+              separatorBuilder: (context, index) {
+                return SizedBox(
+                  height: context.height * 0.02,
+                );
+              },
             );
           }
         }

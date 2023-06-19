@@ -63,7 +63,7 @@ class UrgentCaseCard extends StatelessWidget {
                             style: Theme.of(context).textTheme.labelLarge,
                           ),
                           Text(
-                            '${model.city.toString()} - ${model.gender} - ${model.age}سنة',
+                            '${model.city.toString()} - ${model.gender} - ${model.age} عام',
                             style: Theme.of(context).textTheme.labelLarge,
                           ),
                         ],
