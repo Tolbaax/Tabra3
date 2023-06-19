@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:tabra3/core/utils/assets_manager.dart';
 import 'package:tabra3/core/utils/media_query_values.dart';
 import 'package:tabra3/features/presentation/components/blood_drop.dart';
 
 import '../../../../../core/utils/app_colors.dart';
-import '../../../../data/models/usrgent_case_model.dart';
+import '../../../../data/models/urgent_case_model.dart';
 import 'segmented_button.dart';
 
-
 class UrgentCaseCard extends StatelessWidget {
-  final UrgentCaseModel model;
+  final UrgentCase model;
   final int index;
 
   const UrgentCaseCard({Key? key, required this.model, required this.index})
@@ -46,39 +46,32 @@ class UrgentCaseCard extends StatelessWidget {
                       CircleAvatar(
                         radius: context.width * 0.085,
                         backgroundColor: AppColors.primary.withOpacity(0.6),
-                        backgroundImage: AssetImage(model.image),
+                        backgroundImage: AssetImage(ImageAssets.user),
                       ),
                       SizedBox(
-                        width: context.width * 0.025,
+                        width: context.width * 0.03,
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            model.name,
+                            model.name.toString(),
                             style: Theme.of(context).textTheme.titleSmall,
                           ),
                           Text(
-                            model.hospitalName,
-                            style: Theme.of(context).textTheme.bodySmall,
+                            '${model.bloodBags} اكياس دم',
+                            style: Theme.of(context).textTheme.labelLarge,
                           ),
-                          Row(
-                            children: [
-                              Text(
-                                model.phoneNumber,
-                                style: Theme.of(context).textTheme.bodySmall,
-                              ),
-                              SizedBox(width: context.width*0.04,),
-                              Text(
-                                model.date,
-                                style: Theme.of(context).textTheme.bodySmall,
-                              ),
-                            ],
+                          Text(
+                            '${model.city.toString()} - ${model.gender} - ${model.age}سنة',
+                            style: Theme.of(context).textTheme.labelLarge,
                           ),
                         ],
                       ),
                       const Spacer(),
-                      BloodDroop(text: model.bloodType),
+                      BloodDroop(
+                        text: model.bloodType.toString(),
+                      ),
                     ],
                   ),
                 ),

@@ -8,7 +8,7 @@ import '../../features/presentation/view/tips/tips.dart';
 import 'assets_manager.dart';
 
 class Constants {
-  final List<String> images = [
+  List<String> images = [
     ImageAssets.donation1,
     ImageAssets.donation2,
     ImageAssets.donation3,
@@ -33,5 +33,4 @@ class Constants {
     const TipsScreen(),
     const ProfileScreen(),
   ];
-
 }

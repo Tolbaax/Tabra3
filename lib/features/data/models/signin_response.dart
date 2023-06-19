@@ -8,8 +8,7 @@ class SignInResponse {
   SignInResponse.fromJson(Map<String, dynamic> json) {
     message = json['message'];
     code = json['code'];
-    result =
-        json['result'] != null ? new UserModel.fromJson(json['result']) : null;
+    result = json['result'] != null ? UserModel.fromJson(json['result']) : null;
   }
 
   Map<String, dynamic> toJson() {
