@@ -3,4 +3,5 @@ class EndPoints {
   static const String register = '$baseUrl/User/Register';
   static const String login = '$baseUrl/User/Login';
   static const String allUrgentCases = '$baseUrl/UrgentCase/GetAllUrgentCase';
+  static const String addUrgentCase = '$baseUrl/UrgentCase/AddUrgentCase';
 }

@@ -13,6 +13,19 @@ class Validators {
     return null;
   }
 
+  static String? validateAge(String value) {
+    if (value.isEmpty) {
+      return 'العمر لا يمكن أن يكون فارغًا';
+    }
+
+    if (value.length < 1) {
+      return 'يجب أن يتكون العمر من رقم ع الاقل';
+    } else if (value.length > 30) {
+      return 'لا يمكن أن يتجاوز العمر 3 رقم';
+    }
+    return null;
+  }
+
   static String? validateEmail(String value) {
     if (value.isEmpty) {
       return 'البريد الإلكتروني لا يمكن أن يكون فارغًا';

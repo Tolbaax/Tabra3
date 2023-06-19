@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tabra3/config/routes/routes.dart';
+import 'package:tabra3/core/functions/navigation.dart';
 import 'package:tabra3/core/utils/app_strings.dart';
 import 'package:tabra3/core/utils/assets_manager.dart';
 import 'package:tabra3/core/utils/media_query_values.dart';
+
+import '../../../../../core/functions/app_dialogs.dart';
 import '../cubit/home_cubit.dart';
 import '../cubit/home_states.dart';
 import '../widgets/all_urgent_cases.dart';
@@ -18,7 +21,16 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<HomeCubit, HomeStates>(
-      listener: (context, state) {},
+      listener: (context, state) async {
+        if (state is AddUrgentCaseSuccess) {
+          if (state.response.code == 1) {
+            await HomeCubit.get(context).getAllUrgentCases();
+            navigatePop(context);
+          } else {
+            AppDialogs.showToast(msg: state.response.message.toString());
+          }
+        }
+      },
       builder: (context, state) {
         return Scaffold(
           appBar: const HomeAppBar(),

@@ -53,6 +53,11 @@ class AppStrings {
   static const String nearestBloodBank = 'بنوك الدم القريبة منك';
   static const String male = 'رجل';
   static const String female = 'فتاة';
+  static const String bloodType = 'فصيلة الدم';
+  static const String age = 'العمر';
+  static const String city = 'المدينة';
+  static const String bloodBags = 'عدد اكياس الدم';
+  static const String gender = 'النوع';
 
   //Fonts
   static const String medievalSharpFont = 'MedievalSharp';

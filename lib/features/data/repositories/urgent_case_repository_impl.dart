@@ -1,6 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:tabra3/core/error/failures.dart';
+import 'package:tabra3/core/params/urgent_case_params.dart';
+import 'package:tabra3/features/data/models/signup_response.dart';
 
 import '../../domain/repositories/urgent_case_repository.dart';
 import '../datasources/urgent_case/urgent_case_remote_data_sources.dart';
@@ -15,6 +17,17 @@ class UrgentCaseRepositoryImpl implements UrgentCaseRepository {
   Future<Either<Failure, UrgentCaseModel>> GetAllUrgentCases() async {
     try {
       final result = await remoteDataSource.getAllUrgentCases();
+      return Right(result);
+    } on DioError catch (error) {
+      return Left(ServerFailure(error.message!));
+    }
+  }
+
+  @override
+  Future<Either<Failure, SignUpResponse>> addUrgentCase(
+      UrgentCaseParams params) async {
+    try {
+      final result = await remoteDataSource.addUrgentCase(params);
       return Right(result);
     } on DioError catch (error) {
       return Left(ServerFailure(error.message!));
