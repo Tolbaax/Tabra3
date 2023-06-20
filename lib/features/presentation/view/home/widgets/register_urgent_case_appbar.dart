@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/utils/app_strings.dart';
+class RegisterAppBar extends StatelessWidget implements PreferredSizeWidget {
+  final String text;
 
-class RegisterUrgentCaseAppBar extends StatelessWidget
-    implements PreferredSizeWidget {
-  const RegisterUrgentCaseAppBar({Key? key}) : super(key: key);
+  const RegisterAppBar({Key? key, required this.text}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +17,8 @@ class RegisterUrgentCaseAppBar extends StatelessWidget
           color: Colors.black,
         ),
       ),
-      title: const Text(
-        AppStrings.registerUrgentCases,
+      title: Text(
+        text,
         style: TextStyle(
           fontWeight: FontWeight.w700,
         ),

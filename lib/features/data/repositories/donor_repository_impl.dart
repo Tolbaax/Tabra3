@@ -14,9 +14,9 @@ class DonorRepositoryImpl implements DonorRepository {
   DonorRepositoryImpl({required this.remoteDataSource});
 
   @override
-  Future<Either<Failure, DonorModel>> GetAllDonors() async {
+  Future<Either<Failure, SignUpResponse>> addDonor(AddCaseParams params) async {
     try {
-      final result = await remoteDataSource.getAllDonors();
+      final result = await remoteDataSource.addDonor(params);
       return Right(result);
     } on DioError catch (error) {
       return Left(ServerFailure(error.message!));
@@ -24,9 +24,9 @@ class DonorRepositoryImpl implements DonorRepository {
   }
 
   @override
-  Future<Either<Failure, SignUpResponse>> addDonor(AddCaseParams params) async {
+  Future<Either<Failure, DonorModel>> getAllDonors() async {
     try {
-      final result = await remoteDataSource.addDonor(params);
+      final result = await remoteDataSource.getAllDonors();
       return Right(result);
     } on DioError catch (error) {
       return Left(ServerFailure(error.message!));

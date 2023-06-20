@@ -5,9 +5,9 @@ import '../../../../../config/routes/routes.dart';
 import '../../../../../core/utils/app_strings.dart';
 
 
-class BloodPatientAppBar extends StatelessWidget
+class RecipientAppBar extends StatelessWidget
     implements PreferredSizeWidget {
-  const BloodPatientAppBar({Key? key}) : super(key: key);
+  const RecipientAppBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

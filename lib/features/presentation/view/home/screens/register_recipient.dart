@@ -3,22 +3,25 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tabra3/core/functions/validation.dart';
 import 'package:tabra3/core/params/add_case_params.dart';
 import 'package:tabra3/core/utils/media_query_values.dart';
-import 'package:tabra3/features/presentation/view/home/cubit/home_cubit.dart';
-import 'package:tabra3/features/presentation/view/home/cubit/home_states.dart';
-import 'package:tabra3/features/presentation/view/home/widgets/register_urgent_case_appbar.dart';
 
+import '../../../../../core/functions/app_dialogs.dart';
+import '../../../../../core/functions/navigation.dart';
 import '../../../../../core/utils/app_strings.dart';
 import '../../../components/custom_button.dart';
 import '../../../components/custom_text_filed.dart';
+import '../../recipient/cubit/recipient_cubit.dart';
+import '../../recipient/cubit/recipient_states.dart';
+import '../widgets/register_urgent_case_appbar.dart';
 
-class RegisterUrgentCases extends StatefulWidget {
-  const RegisterUrgentCases({Key? key}) : super(key: key);
+class RegisterRecipient extends StatefulWidget {
+  const RegisterRecipient({Key? key}) : super(key: key);
 
   @override
-  State<RegisterUrgentCases> createState() => _RegisterUrgentCasesState();
+  State<RegisterRecipient> createState() => _RegisterRecipientState();
 }
 
-class _RegisterUrgentCasesState extends State<RegisterUrgentCases> {
+
+class _RegisterRecipientState extends State<RegisterRecipient> {
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
   final _ageController = TextEditingController();
@@ -40,15 +43,27 @@ class _RegisterUrgentCasesState extends State<RegisterUrgentCases> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeCubit, HomeStates>(
+    return BlocConsumer<RecipientCubit, RecipientStates>(
+      listener: (context, state) async {
+        if (state is AddRecipientSuccess) {
+          if (state.response.code == 1) {
+            await RecipientCubit.get(context).getAllRecipients();
+            navigatePop(context);
+          } else {
+            AppDialogs.showToast(msg: state.response.message.toString());
+          }
+        }
+      },
       builder: (context, state) {
         return Directionality(
           textDirection: TextDirection.rtl,
           child: Scaffold(
-            appBar: RegisterAppBar(text: AppStrings.registerUrgentCases),
+            appBar: RegisterAppBar(text: AppStrings.bloodSick),
             body: Padding(
               padding: EdgeInsetsDirectional.symmetric(
-                  horizontal: 20.0, vertical: 20.0),
+                horizontal: 20.0,
+                vertical: 20.0,
+              ),
               child: SingleChildScrollView(
                 child: Form(
                   key: _formKey,
@@ -76,7 +91,7 @@ class _RegisterUrgentCasesState extends State<RegisterUrgentCases> {
                         controller: _genderController,
                         hintText: AppStrings.gender,
                         keyboardType: TextInputType.emailAddress,
-                        validator: (value)=>Validators.validateType(value),
+                        validator: (value) => Validators.validateType(value),
                       ),
                       SizedBox(
                         height: context.height * 0.035,
@@ -84,7 +99,7 @@ class _RegisterUrgentCasesState extends State<RegisterUrgentCases> {
                       CustomTextFiled(
                         controller: _bloodTypeController,
                         hintText: AppStrings.bloodType,
-                        validator: (value)=>Validators.validateType(value),
+                        validator: (value) => Validators.validateType(value),
                       ),
                       SizedBox(
                         height: context.height * 0.035,
@@ -92,7 +107,7 @@ class _RegisterUrgentCasesState extends State<RegisterUrgentCases> {
                       CustomTextFiled(
                         controller: _cityController,
                         hintText: AppStrings.city,
-                        validator: (value)=>Validators.validateType(value),
+                        validator: (value) => Validators.validateType(value),
                       ),
                       SizedBox(
                         height: context.height * 0.035,
@@ -109,7 +124,7 @@ class _RegisterUrgentCasesState extends State<RegisterUrgentCases> {
                       CustomButton(
                         onTap: () async {
                           if (_formKey.currentState!.validate()) {
-                            await HomeCubit.get(context).addUrgentCase(
+                            await RecipientCubit.get(context).addRecipient(
                               AddCaseParams(
                                 name: _nameController.text.trim(),
                                 age: _ageController.text.trim(),
@@ -122,7 +137,7 @@ class _RegisterUrgentCasesState extends State<RegisterUrgentCases> {
                           }
                         },
                         text: AppStrings.register,
-                        condition: state is AddUrgentCaseLoading,
+                        condition: state is AddRecipientLoading,
                       ),
                     ],
                   ),

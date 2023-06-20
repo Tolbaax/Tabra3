@@ -6,21 +6,21 @@ import 'package:tabra3/features/data/models/signup_response.dart';
 import '../../../../core/params/add_case_params.dart';
 import '../../models/donor_model.dart';
 
-abstract class DonorRemoteDataSource {
-  Future<DonorModel> getAllDonors();
+abstract class RecipientRemoteDataSource {
+  Future<DonorModel> getAllRecipients();
 
-  Future<SignUpResponse> addDonor(AddCaseParams params);
+  Future<SignUpResponse> addRecipient(AddCaseParams params);
 }
 
-class DonorRemoteDataSourceImpl implements DonorRemoteDataSource {
+class RecipientRemoteDataSourceImpl implements RecipientRemoteDataSource {
   final ApiConsumer apiConsumer;
 
-  DonorRemoteDataSourceImpl({required this.apiConsumer});
+  RecipientRemoteDataSourceImpl({required this.apiConsumer});
 
   @override
-  Future<DonorModel> getAllDonors() async {
+  Future<DonorModel> getAllRecipients() async {
     try {
-      final response = await apiConsumer.get(EndPoints.allDonors);
+      final response = await apiConsumer.post(EndPoints.allRecipient);
 
       if (response != null && response is Map<String, dynamic>) {
         return DonorModel.fromJson(response);
@@ -32,16 +32,16 @@ class DonorRemoteDataSourceImpl implements DonorRemoteDataSource {
   }
 
   @override
-  Future<SignUpResponse> addDonor(AddCaseParams params) async {
+  Future<SignUpResponse> addRecipient(AddCaseParams params) async {
     try {
       final response =
-          await apiConsumer.post(EndPoints.addDonor, body: params.toJson());
+          await apiConsumer.post(EndPoints.addRecipient, body: params.toJson());
 
       if (response != null && response is Map<String, dynamic>) {
         return SignUpResponse.fromJson(response);
       }
     } catch (e) {
-      print('Error during add Donor: $e');
+      print('Error during add Recipient: $e');
     }
 
     return SignUpResponse(message: 'An error occurred', code: 500);

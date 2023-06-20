@@ -9,6 +9,7 @@ import '../../../components/custom_text_filed.dart';
 
 class SearchDonate extends StatefulWidget {
   final String text;
+
   const SearchDonate({Key? key, required this.text}) : super(key: key);
 
   @override
@@ -31,7 +32,7 @@ class _SearchDonateState extends State<SearchDonate> {
               color: Colors.black,
             ),
           ),
-          title:  Text(widget.text),
+          title: Text(widget.text),
         ),
         body: Padding(
           padding: const EdgeInsetsDirectional.symmetric(horizontal: 20.0),
@@ -96,10 +97,11 @@ class _SearchDonateState extends State<SearchDonate> {
               const CustomTextFiled(
                 hintText: AppStrings.selectPLace,
                 suffixIcon: Icons.location_on_outlined,
-              ),   SizedBox(
+              ),
+              SizedBox(
                 height: context.height * 0.08,
               ),
-              const CustomButton(text: AppStrings.searchDonate),
+              Center(child: const CustomButton(text: AppStrings.searchDonate)),
             ],
           ),
         ),
@@ -107,4 +109,3 @@ class _SearchDonateState extends State<SearchDonate> {
     );
   }
 }
-

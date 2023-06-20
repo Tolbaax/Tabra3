@@ -3,13 +3,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tabra3/core/functions/validation.dart';
 import 'package:tabra3/core/params/add_case_params.dart';
 import 'package:tabra3/core/utils/media_query_values.dart';
+import 'package:tabra3/features/presentation/view/donors/cubit/donor_cubit.dart';
+import 'package:tabra3/features/presentation/view/home/widgets/register_urgent_case_appbar.dart';
 
+import '../../../../../core/functions/app_dialogs.dart';
+import '../../../../../core/functions/navigation.dart';
 import '../../../../../core/utils/app_strings.dart';
 import '../../../components/custom_button.dart';
 import '../../../components/custom_text_filed.dart';
-import '../cubit/home_cubit.dart';
-import '../cubit/home_states.dart';
-import '../widgets/register_urgent_case_appbar.dart';
+import '../../donors/cubit/donor_states.dart';
 
 class RegisterNewDonor extends StatefulWidget {
   const RegisterNewDonor({Key? key}) : super(key: key);
@@ -40,15 +42,27 @@ class _RegisterNewDonorState extends State<RegisterNewDonor> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeCubit, HomeStates>(
+    return BlocConsumer<DonorCubit, DonorStates>(
+      listener: (context, state) async {
+        if (state is AddDonorSuccess) {
+          if (state.response.code == 1) {
+            await DonorCubit.get(context).getAllDonors();
+            navigatePop(context);
+          } else {
+            AppDialogs.showToast(msg: state.response.message.toString());
+          }
+        }
+      },
       builder: (context, state) {
         return Directionality(
           textDirection: TextDirection.rtl,
           child: Scaffold(
-            appBar: RegisterUrgentCaseAppBar(),
+            appBar: RegisterAppBar(text: AppStrings.newDonor),
             body: Padding(
               padding: EdgeInsetsDirectional.symmetric(
-                  horizontal: 20.0, vertical: 20.0),
+                horizontal: 20.0,
+                vertical: 20.0,
+              ),
               child: SingleChildScrollView(
                 child: Form(
                   key: _formKey,
@@ -109,7 +123,7 @@ class _RegisterNewDonorState extends State<RegisterNewDonor> {
                       CustomButton(
                         onTap: () async {
                           if (_formKey.currentState!.validate()) {
-                            await HomeCubit.get(context).addDonor(
+                            await DonorCubit.get(context).addDonor(
                               AddCaseParams(
                                 name: _nameController.text.trim(),
                                 age: _ageController.text.trim(),

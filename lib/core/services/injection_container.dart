@@ -2,15 +2,21 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tabra3/features/data/datasources/donor/donor_remote_datasource.dart';
+import 'package:tabra3/features/data/datasources/recipient/recipient_remote_datasource.dart';
 import 'package:tabra3/features/data/datasources/urgent_case/urgent_case_remote_data_sources.dart';
 import 'package:tabra3/features/data/repositories/donor_repository_impl.dart';
+import 'package:tabra3/features/data/repositories/recipient_repository_impl.dart';
 import 'package:tabra3/features/data/repositories/urgent_case_repository_impl.dart';
 import 'package:tabra3/features/domain/repositories/donor_repository.dart';
+import 'package:tabra3/features/domain/repositories/recipient_repository.dart';
 import 'package:tabra3/features/domain/repositories/urgent_case_repository.dart';
 import 'package:tabra3/features/domain/usecases/donor_usecase.dart';
+import 'package:tabra3/features/domain/usecases/recipient_usecase.dart';
 import 'package:tabra3/features/domain/usecases/urgent_case_usecase.dart';
+import 'package:tabra3/features/presentation/view/donors/cubit/donor_cubit.dart';
 import 'package:tabra3/features/presentation/view/home/cubit/home_cubit.dart';
 import 'package:tabra3/features/presentation/view/login/cubit/login_cubit.dart';
+import 'package:tabra3/features/presentation/view/recipient/cubit/recipient_cubit.dart';
 
 import '../../features/data/datasources/auth/auth_local_datasources.dart';
 import '../../features/data/datasources/auth/auth_remote_datasources.dart';
@@ -29,7 +35,9 @@ Future<void> init() async {
   // Cubit
   sl.registerLazySingleton<SignUpCubit>(() => SignUpCubit(sl()));
   sl.registerLazySingleton<LoginCubit>(() => LoginCubit(sl()));
-  sl.registerLazySingleton<HomeCubit>(() => HomeCubit(sl(), sl()));
+  sl.registerLazySingleton<HomeCubit>(() => HomeCubit(sl()));
+  sl.registerLazySingleton<DonorCubit>(() => DonorCubit(sl()));
+  sl.registerLazySingleton<RecipientCubit>(() => RecipientCubit(sl()));
 
   // Core
   sl.registerLazySingleton<ApiConsumer>(() => DioConsumer(client: sl()));
@@ -41,6 +49,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => AuthUseCase(sl()));
   sl.registerLazySingleton(() => UrgentCaseUsecase(sl()));
   sl.registerLazySingleton(() => DonorUseCase(sl()));
+  sl.registerLazySingleton(() => RecipientUseCase(sl()));
 
   // Repository
   sl.registerLazySingleton<AuthRepository>(
@@ -49,6 +58,8 @@ Future<void> init() async {
       () => UrgentCaseRepositoryImpl(remoteDataSource: sl()));
   sl.registerLazySingleton<DonorRepository>(
       () => DonorRepositoryImpl(remoteDataSource: sl()));
+  sl.registerLazySingleton<RecipientRepository>(
+      () => RecipientRepositoryImpl(remoteDataSource: sl()));
 
   // Data Source
   sl.registerLazySingleton<AuthLocalDataSource>(
@@ -59,6 +70,8 @@ Future<void> init() async {
       () => UrgentCaseRemoteDataSourceImpl(apiConsumer: sl()));
   sl.registerLazySingleton<DonorRemoteDataSource>(
       () => DonorRemoteDataSourceImpl(apiConsumer: sl()));
+  sl.registerLazySingleton<RecipientRemoteDataSource>(
+      () => RecipientRemoteDataSourceImpl(apiConsumer: sl()));
 
   // External
   final sharedPref = await SharedPreferences.getInstance();

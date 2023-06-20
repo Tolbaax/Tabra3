@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tabra3/config/routes/routes.dart';
 import 'package:tabra3/core/functions/navigation.dart';
-import 'package:tabra3/core/utils/app_strings.dart';
-import 'package:tabra3/core/utils/assets_manager.dart';
 import 'package:tabra3/core/utils/media_query_values.dart';
+import 'package:tabra3/features/presentation/view/home/widgets/register_row.dart';
+import 'package:tabra3/features/presentation/view/home/widgets/urgent_case_row.dart';
 
 import '../../../../../core/functions/app_dialogs.dart';
 import '../cubit/home_cubit.dart';
 import '../cubit/home_states.dart';
 import '../widgets/all_urgent_cases.dart';
-import '../widgets/custom_card.dart';
 import '../widgets/custom_carusoal_slider.dart';
 import '../widgets/home_appbar.dart';
 
@@ -36,67 +34,26 @@ class HomeScreen extends StatelessWidget {
           appBar: const HomeAppBar(),
           body: Directionality(
             textDirection: TextDirection.rtl,
-            child: Padding(
-              padding: EdgeInsetsDirectional.only(
-                end: context.toPadding * 0.45,
-                start: context.toPadding * 0.45,
-                top: context.toPadding * 0.1,
-              ),
-              child: Column(
-                children: [
-                  const CustomCarousalSlider(),
-                  SizedBox(
-                    height: 15.0.h,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            child: Column(
+              children: [
+                const CustomCarousalSlider(),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
                     children: [
-                      CustomCard(
-                        onTab: () {
-                          Navigator.pushNamed(context, Routes.bloodPatient);
-                        },
-                        text: AppStrings.bloodSick,
-                        img: ImageAssets.img1,
+                      SizedBox(
+                        height: 13.0.h,
                       ),
-                      CustomCard(
-                        onTab: () {
-                          Navigator.pushNamed(context, Routes.registerUrgent);
-                        },
-                        text: AppStrings.registerUrgentCases,
-                        img: ImageAssets.img2,
+                      RegisterRow(),
+                      SizedBox(
+                        height: context.height * 0.01,
                       ),
-                      CustomCard(
-                        onTab: () {
-                          Navigator.pushNamed(context, Routes.newDonor);
-                        },
-                        text: AppStrings.newDonor,
-                        img: ImageAssets.img3,
-                      ),
+                      UrgentCaseRow(),
                     ],
                   ),
-                  SizedBox(
-                    height: context.height * 0.02,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        AppStrings.urgentCases,
-                        style: Theme.of(context).textTheme.titleLarge!,
-                      ),
-                      GestureDetector(
-                        onTap: () =>
-                            Navigator.pushNamed(context, Routes.urgentCases),
-                        child: Text(
-                          AppStrings.seeAll,
-                          style: Theme.of(context).textTheme.bodyMedium,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Expanded(child: AllUrgentCases()),
-                ],
-              ),
+                ),
+                Expanded(child: AllUrgentCases()),
+              ],
             ),
           ),
         );

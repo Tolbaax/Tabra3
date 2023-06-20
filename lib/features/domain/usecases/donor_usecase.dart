@@ -12,7 +12,7 @@ class DonorUseCase {
   DonorUseCase(this.donorRepository);
 
   Future<Either<Failure, DonorModel>> getAllDonors() async {
-    return await donorRepository.GetAllDonors();
+    return await donorRepository.getAllDonors();
   }
 
   Future<Either<Failure, SignUpResponse>> addDonor(AddCaseParams params) async {

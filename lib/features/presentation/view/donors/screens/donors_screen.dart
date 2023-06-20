@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../data/models/donor_model.dart';
-import '../../home/cubit/home_cubit.dart';
-import '../../home/cubit/home_states.dart';
+import '../cubit/donor_cubit.dart';
+import '../cubit/donor_states.dart';
 import '../widgets/donor_card.dart';
 import '../widgets/donors_appbar.dart';
 
@@ -15,7 +15,8 @@ class DonorsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: DonorAppBar(),
-      body: BlocBuilder<HomeCubit, HomeStates>(
+      body: BlocConsumer<DonorCubit, DonorStates>(
+        listener: (context, state) {},
         builder: (context, state) {
           if (state is GetAllDonorLoading) {
             return Center(
@@ -28,21 +29,26 @@ class DonorsScreen extends StatelessWidget {
             if (donors.isEmpty) {
               return Center(child: const Text('No Donors Yet'));
             } else {
-              return ListView.separated(
-                itemCount: donors.length,
-                reverse: true,
-                physics: const BouncingScrollPhysics(),
-                itemBuilder: (context, index) {
-                  return DonorCard(
-                    model: donors[index],
-                    index: index,
-                  );
-                },
-                separatorBuilder: (context, index) {
-                  return SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.02,
-                  );
-                },
+              return Directionality(
+                textDirection: TextDirection.rtl,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ListView.separated(
+                    itemCount: donors.length,
+                    physics: const BouncingScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return DonorCard(
+                        model: donors[index],
+                        index: index,
+                      );
+                    },
+                    separatorBuilder: (context, index) {
+                      return SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.02,
+                      );
+                    },
+                  ),
+                ),
               );
             }
           }

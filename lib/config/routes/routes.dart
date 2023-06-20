@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
 import '../../core/utils/app_strings.dart';
-import '../../features/presentation/view/home/screens/register_blood_patient.dart';
+import '../../features/presentation/view/home/screens/register_recipient.dart';
 import '../../features/presentation/view/home/screens/register_new_donor.dart';
 import '../../features/presentation/view/home/screens/register_urgent_cases.dart';
 import '../../features/presentation/view/home/screens/search_donate.dart';
@@ -74,7 +74,7 @@ class AppRoutes {
       case Routes.bloodPatient:
         return PageTransition(
           type: PageTransitionType.fade,
-          child: const RegisterBloodPatient(),
+          child: const RegisterRecipient(),
         );
 
       case Routes.login:

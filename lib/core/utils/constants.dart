@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tabra3/features/presentation/view/recipient/screens/recipient_screen.dart';
 
-import '../../features/presentation/view/blood_patient/blood_patient.dart';
 import '../../features/presentation/view/donors/screens/donors_screen.dart';
 import '../../features/presentation/view/home/screens/home_screen.dart';
 import '../../features/presentation/view/profile/screens/profile_screen.dart';
@@ -29,7 +29,7 @@ class Constants {
   List<Widget> screens = [
     const HomeScreen(),
     const DonorsScreen(),
-    const BloodPatientScreen(),
+    const RecipientScreen(),
     const TipsScreen(),
     const ProfileScreen(),
   ];

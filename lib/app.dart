@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tabra3/features/presentation/view/donors/cubit/donor_cubit.dart';
 import 'package:tabra3/features/presentation/view/home/cubit/home_cubit.dart';
+import 'package:tabra3/features/presentation/view/recipient/cubit/recipient_cubit.dart';
 
 import 'config/routes/routes.dart';
 import 'config/themes/app_theme.dart';
@@ -17,8 +19,12 @@ class MyApp extends StatelessWidget {
         return MultiBlocProvider(
           providers: [
             BlocProvider(
-              create: (context) => sl<HomeCubit>()..getAllUrgentCases(),
+                create: (context) => sl<HomeCubit>()..getAllUrgentCases()),
+            BlocProvider(
+              create: (context) => sl<DonorCubit>()..getAllDonors(),
             ),
+            BlocProvider(
+                create: (context) => sl<RecipientCubit>()..getAllRecipients()),
           ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,

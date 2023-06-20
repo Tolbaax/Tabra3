@@ -6,4 +6,6 @@ class EndPoints {
   static const String addUrgentCase = '$baseUrl/UrgentCase/AddUrgentCase';
   static const String allDonors = '$baseUrl/Donor/GetAllDonors';
   static const String addDonor = '$baseUrl/Donor/AddDonor';
+  static const String allRecipient = '$baseUrl/Recipient/GetAllRecipient';
+  static const String addRecipient = '$baseUrl/Recipient/AddRecipient';
 }

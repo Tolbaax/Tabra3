@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:intl/intl.dart';
 import 'package:tabra3/core/utils/assets_manager.dart';
 import 'package:tabra3/core/utils/media_query_values.dart';
 import 'package:tabra3/features/data/models/donor_model.dart';
@@ -17,7 +18,11 @@ class DonorCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // int selectedIndex = 0;
+    String? originalDateTimeString = model.creationDate;
+
+    DateTime originalDateTime = DateTime.parse(originalDateTimeString!);
+
+    String creationDate = DateFormat("yyyy-MM-dd").format(originalDateTime);
 
     return AnimationConfiguration.staggeredList(
       position: index,
@@ -59,11 +64,11 @@ class DonorCard extends StatelessWidget {
                             style: Theme.of(context).textTheme.titleSmall,
                           ),
                           Text(
-                            '${model.age} اكياس دم',
+                            '${model.city.toString()} - ${model.gender} - ${model.age} عام',
                             style: Theme.of(context).textTheme.labelLarge,
                           ),
                           Text(
-                            '${model.city.toString()} - ${model.gender} - ${model.age} عام',
+                            creationDate,
                             style: Theme.of(context).textTheme.labelLarge,
                           ),
                         ],
