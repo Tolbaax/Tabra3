@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:tabra3/core/utils/assets_manager.dart';
 import 'package:tabra3/core/utils/media_query_values.dart';
+import 'package:tabra3/features/data/models/donor_model.dart';
 import 'package:tabra3/features/presentation/components/blood_drop.dart';
 
 import '../../../../../core/utils/app_colors.dart';
-import '../../../../data/models/donors_model.dart';
 import '../../home/widgets/segmented_button.dart';
 
 class DonorCard extends StatelessWidget {
-  final DonorModel model;
+  final Donor model;
   final int index;
 
   const DonorCard({Key? key, required this.model, required this.index})
@@ -45,34 +46,32 @@ class DonorCard extends StatelessWidget {
                       CircleAvatar(
                         radius: context.width * 0.085,
                         backgroundColor: AppColors.primary.withOpacity(0.6),
-                        backgroundImage: AssetImage(model.image),
+                        backgroundImage: AssetImage(ImageAssets.user),
                       ),
                       SizedBox(
-                        width: context.width * 0.025,
+                        width: context.width * 0.03,
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            model.donorName,
+                            model.name.toString(),
                             style: Theme.of(context).textTheme.titleSmall,
                           ),
                           Text(
-                            model.gov,
-                            style: Theme.of(context).textTheme.bodySmall,
+                            '${model.age} اكياس دم',
+                            style: Theme.of(context).textTheme.labelLarge,
                           ),
-                          Row(
-                            children: [
-                              Text(
-                                model.phoneNumber,
-                                style: Theme.of(context).textTheme.bodySmall,
-                              ),
-                            ],
+                          Text(
+                            '${model.city.toString()} - ${model.gender} - ${model.age} عام',
+                            style: Theme.of(context).textTheme.labelLarge,
                           ),
                         ],
                       ),
                       const Spacer(),
-                      BloodDroop(text: model.bloodType),
+                      BloodDroop(
+                        text: model.bloodType.toString(),
+                      ),
                     ],
                   ),
                 ),

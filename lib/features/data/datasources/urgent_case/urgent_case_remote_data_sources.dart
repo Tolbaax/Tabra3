@@ -3,13 +3,13 @@ import 'package:tabra3/core/api/api_consumer.dart';
 import 'package:tabra3/core/api/end_points.dart';
 import 'package:tabra3/features/data/models/signup_response.dart';
 
-import '../../../../core/params/urgent_case_params.dart';
+import '../../../../core/params/add_case_params.dart';
 import '../../models/urgent_case_model.dart';
 
 abstract class UrgentCaseRemoteDataSource {
   Future<UrgentCaseModel> getAllUrgentCases();
 
-  Future<SignUpResponse> addUrgentCase(UrgentCaseParams params);
+  Future<SignUpResponse> addUrgentCase(AddCaseParams params);
 }
 
 class UrgentCaseRemoteDataSourceImpl implements UrgentCaseRemoteDataSource {
@@ -32,7 +32,7 @@ class UrgentCaseRemoteDataSourceImpl implements UrgentCaseRemoteDataSource {
   }
 
   @override
-  Future<SignUpResponse> addUrgentCase(UrgentCaseParams params) async {
+  Future<SignUpResponse> addUrgentCase(AddCaseParams params) async {
     try {
       final response = await apiConsumer.post(EndPoints.addUrgentCase,
           body: params.toJson());

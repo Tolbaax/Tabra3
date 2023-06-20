@@ -1,9 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tabra3/features/data/datasources/donor/donor_remote_datasource.dart';
 import 'package:tabra3/features/data/datasources/urgent_case/urgent_case_remote_data_sources.dart';
+import 'package:tabra3/features/data/repositories/donor_repository_impl.dart';
 import 'package:tabra3/features/data/repositories/urgent_case_repository_impl.dart';
+import 'package:tabra3/features/domain/repositories/donor_repository.dart';
 import 'package:tabra3/features/domain/repositories/urgent_case_repository.dart';
+import 'package:tabra3/features/domain/usecases/donor_usecase.dart';
 import 'package:tabra3/features/domain/usecases/urgent_case_usecase.dart';
 import 'package:tabra3/features/presentation/view/home/cubit/home_cubit.dart';
 import 'package:tabra3/features/presentation/view/login/cubit/login_cubit.dart';
@@ -25,7 +29,7 @@ Future<void> init() async {
   // Cubit
   sl.registerLazySingleton<SignUpCubit>(() => SignUpCubit(sl()));
   sl.registerLazySingleton<LoginCubit>(() => LoginCubit(sl()));
-  sl.registerLazySingleton<HomeCubit>(() => HomeCubit(sl()));
+  sl.registerLazySingleton<HomeCubit>(() => HomeCubit(sl(), sl()));
 
   // Core
   sl.registerLazySingleton<ApiConsumer>(() => DioConsumer(client: sl()));
@@ -36,21 +40,25 @@ Future<void> init() async {
   // UseCases
   sl.registerLazySingleton(() => AuthUseCase(sl()));
   sl.registerLazySingleton(() => UrgentCaseUsecase(sl()));
+  sl.registerLazySingleton(() => DonorUseCase(sl()));
 
   // Repository
   sl.registerLazySingleton<AuthRepository>(
       () => AuthRepositoryImpl(authRemoteDataSource: sl()));
   sl.registerLazySingleton<UrgentCaseRepository>(
       () => UrgentCaseRepositoryImpl(remoteDataSource: sl()));
+  sl.registerLazySingleton<DonorRepository>(
+      () => DonorRepositoryImpl(remoteDataSource: sl()));
 
   // Data Source
   sl.registerLazySingleton<AuthLocalDataSource>(
       () => AuthLocalDataSourceImpl(preferences: sl()));
   sl.registerLazySingleton<AuthRemoteDataSource>(
       () => AuthRemoteDataSourceImpl(apiConsumer: sl()));
-
   sl.registerLazySingleton<UrgentCaseRemoteDataSource>(
       () => UrgentCaseRemoteDataSourceImpl(apiConsumer: sl()));
+  sl.registerLazySingleton<DonorRemoteDataSource>(
+      () => DonorRemoteDataSourceImpl(apiConsumer: sl()));
 
   // External
   final sharedPref = await SharedPreferences.getInstance();

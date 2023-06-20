@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:tabra3/core/params/urgent_case_params.dart';
+import 'package:tabra3/core/params/add_case_params.dart';
 import 'package:tabra3/features/data/models/signup_response.dart';
 
 import '../../../core/error/failures.dart';
@@ -16,7 +16,7 @@ class UrgentCaseUsecase {
   }
 
   Future<Either<Failure, SignUpResponse>> addUrgentCase(
-      UrgentCaseParams params) async {
+      AddCaseParams params) async {
     return await urgentCaseRepository.addUrgentCase(params);
   }
 }

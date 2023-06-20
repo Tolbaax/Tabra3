@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class UrgentCaseParams extends Equatable {
+class AddCaseParams extends Equatable {
   final String name;
   final String age;
   final String gender;
@@ -8,7 +8,7 @@ class UrgentCaseParams extends Equatable {
   final String city;
   final String bloodBags;
 
-  const UrgentCaseParams({
+  const AddCaseParams({
     required this.name,
     required this.age,
     required this.gender,

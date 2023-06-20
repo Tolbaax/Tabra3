@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tabra3/core/utils/app_colors.dart';
-import 'package:tabra3/core/utils/media_query_values.dart';
+import 'package:tabra3/features/data/models/urgent_case_model.dart';
 
 import '../cubit/home_cubit.dart';
 import '../cubit/home_states.dart';
@@ -12,36 +12,41 @@ class AllUrgentCases extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeCubit, HomeStates>(
+    return BlocConsumer<HomeCubit, HomeStates>(
+      listener: (context, state) {},
       builder: (context, state) {
         if (state is GetAllUrgentCaseLoading) {
-          return CircularProgressIndicator(color: AppColors.primary);
-        }
-
-        if (state is GetAllUrgentCaseSuccess) {
-          if (state.urgentCase.isEmpty) {
+          return Center(
+            child: CircularProgressIndicator(
+              color: AppColors.primary,
+            ),
+          );
+        } else if (state is GetAllUrgentCaseSuccess) {
+          final List<UrgentCase> urgentCases = state.urgentCase;
+          if (urgentCases.isEmpty) {
             return Center(child: const Text('No Urgent Cases Yet'));
           } else {
-            return ListView.separated(
-              itemCount: state.urgentCase.length,
-              reverse: true,
-              physics: const BouncingScrollPhysics(),
-              itemBuilder: (context, index) {
-                return UrgentCaseCard(
-                  model: state.urgentCase[index],
-                  index: index,
-                );
-              },
-              separatorBuilder: (context, index) {
-                return SizedBox(
-                  height: context.height * 0.02,
-                );
-              },
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ListView.separated(
+                itemCount: urgentCases.length,
+                physics: const BouncingScrollPhysics(),
+                itemBuilder: (context, index) {
+                  return UrgentCaseCard(
+                    model: urgentCases[index],
+                    index: index,
+                  );
+                },
+                separatorBuilder: (context, index) {
+                  return SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.02,
+                  );
+                },
+              ),
             );
           }
         }
-
-        return const SizedBox.shrink();
+        return Container();
       },
     );
   }

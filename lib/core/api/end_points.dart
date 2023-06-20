@@ -4,4 +4,6 @@ class EndPoints {
   static const String login = '$baseUrl/User/Login';
   static const String allUrgentCases = '$baseUrl/UrgentCase/GetAllUrgentCase';
   static const String addUrgentCase = '$baseUrl/UrgentCase/AddUrgentCase';
+  static const String allDonors = '$baseUrl/Donor/GetAllDonors';
+  static const String addDonor = '$baseUrl/Donor/AddDonor';
 }

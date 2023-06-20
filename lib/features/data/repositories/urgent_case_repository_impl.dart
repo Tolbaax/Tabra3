@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:tabra3/core/error/failures.dart';
-import 'package:tabra3/core/params/urgent_case_params.dart';
+import 'package:tabra3/core/params/add_case_params.dart';
 import 'package:tabra3/features/data/models/signup_response.dart';
 
 import '../../domain/repositories/urgent_case_repository.dart';
@@ -25,7 +25,7 @@ class UrgentCaseRepositoryImpl implements UrgentCaseRepository {
 
   @override
   Future<Either<Failure, SignUpResponse>> addUrgentCase(
-      UrgentCaseParams params) async {
+      AddCaseParams params) async {
     try {
       final result = await remoteDataSource.addUrgentCase(params);
       return Right(result);
