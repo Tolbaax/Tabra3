@@ -32,4 +32,14 @@ class DonorRepositoryImpl implements DonorRepository {
       return Left(ServerFailure(error.message!));
     }
   }
+
+  @override
+  Future<Either<Failure, DonorModel>> getDonorByAddress(String address) async {
+    try {
+      final result = await remoteDataSource.getDonorByAddress(address);
+      return Right(result);
+    } on DioError catch (error) {
+      return Left(ServerFailure(error.message!));
+    }
+  }
 }

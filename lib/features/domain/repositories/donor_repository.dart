@@ -8,4 +8,6 @@ abstract class DonorRepository {
   Future<Either<Failure, DonorModel>> getAllDonors();
 
   Future<Either<Failure, SignUpResponse>> addDonor(AddCaseParams params);
+
+  Future<Either<Failure, DonorModel>> getDonorByAddress(String address);
 }

@@ -18,4 +18,8 @@ class DonorUseCase {
   Future<Either<Failure, SignUpResponse>> addDonor(AddCaseParams params) async {
     return await donorRepository.addDonor(params);
   }
+
+  Future<Either<Failure, DonorModel>> getDonorByAddress(String address) async {
+    return await donorRepository.getDonorByAddress(address);
+  }
 }

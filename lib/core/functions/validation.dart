@@ -34,6 +34,14 @@ class Validators {
     return null;
   }
 
+  static String? validateAddress(String value) {
+    if (value.isEmpty) {
+      return 'من فضلك اختار المكان';
+    }
+
+    return null;
+  }
+
   static String? validateEmail(String value) {
     if (value.isEmpty) {
       return 'البريد الإلكتروني لا يمكن أن يكون فارغًا';

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:tabra3/features/presentation/view/donors/screens/search_donat_result_screen.dart';
 
 import '../../core/utils/app_strings.dart';
 import '../../features/presentation/view/home/screens/register_recipient.dart';
 import '../../features/presentation/view/home/screens/register_new_donor.dart';
 import '../../features/presentation/view/home/screens/register_urgent_cases.dart';
-import '../../features/presentation/view/home/screens/search_donate.dart';
+import '../../features/presentation/view/donors/screens/search_donate.dart';
 import '../../features/presentation/view/home/screens/urgent_cases_list.dart';
 import '../../features/presentation/view/layout/layout_screen.dart';
 import '../../features/presentation/view/login/screens/login_screen.dart';
@@ -24,6 +25,7 @@ class Routes {
   static const String newDonor = '/newDonor';
   static const String registerUrgent = '/registerUrgent';
   static const String bloodPatient = '/bloodPatient';
+  static const String searchDonateResult = '/searchDonateResult';
 }
 
 class AppRoutes {
@@ -87,6 +89,12 @@ class AppRoutes {
         return PageTransition(
           type: PageTransitionType.rightToLeftWithFade,
           child: RegisterScreen(),
+        );
+
+      case Routes.searchDonateResult:
+        return PageTransition(
+          type: PageTransitionType.rightToLeftWithFade,
+          child: SearchDonateResultScreen(),
         );
 
       default:

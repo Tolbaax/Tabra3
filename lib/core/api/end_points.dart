@@ -8,4 +8,5 @@ class EndPoints {
   static const String addDonor = '$baseUrl/Donor/AddDonor';
   static const String allRecipient = '$baseUrl/Recipient/GetAllRecipient';
   static const String addRecipient = '$baseUrl/Recipient/AddRecipient';
+  static const String getDonorByAddress = '$baseUrl/Donor/GetDonorByAddress';
 }

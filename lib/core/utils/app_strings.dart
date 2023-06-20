@@ -58,6 +58,7 @@ class AppStrings {
   static const String city = 'المدينة';
   static const String bloodBags = 'عدد اكياس الدم';
   static const String gender = 'النوع';
+  static const String noDonors = 'There are no donors\nAt this address';
 
   //Fonts
   static const String medievalSharpFont = 'MedievalSharp';

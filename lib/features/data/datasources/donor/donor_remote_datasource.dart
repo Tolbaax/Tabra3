@@ -10,6 +10,8 @@ abstract class DonorRemoteDataSource {
   Future<DonorModel> getAllDonors();
 
   Future<SignUpResponse> addDonor(AddCaseParams params);
+
+  Future<DonorModel> getDonorByAddress(String address);
 }
 
 class DonorRemoteDataSourceImpl implements DonorRemoteDataSource {
@@ -45,5 +47,22 @@ class DonorRemoteDataSourceImpl implements DonorRemoteDataSource {
     }
 
     return SignUpResponse(message: 'An error occurred', code: 500);
+  }
+
+  @override
+  Future<DonorModel> getDonorByAddress(String address) async {
+    Map<String, dynamic> queryParameters = {'Address': address};
+
+    try {
+      final response = await apiConsumer.get(EndPoints.getDonorByAddress,
+          queryParameters: queryParameters);
+
+      if (response != null && response is Map<String, dynamic>) {
+        return DonorModel.fromJson(response);
+      }
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+    return DonorModel(message: 'An error occurred', code: 500);
   }
 }
