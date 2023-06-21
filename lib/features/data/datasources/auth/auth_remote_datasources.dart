@@ -24,21 +24,14 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     try {
       final response =
           await apiConsumer.post(EndPoints.login, body: params.toJson());
-
-      if (response != null && response is Map<String, dynamic>) {
+      if (response != null) {
         return SignInResponse.fromJson(response);
+      } else {
+        throw Exception('Sign in failed.');
       }
     } catch (e) {
-      print('Error during sign-up: $e');
+      throw Exception('Failed to sign in: $e');
     }
-
-    return SignInResponse(message: 'An error occurred', code: 500);
-  }
-
-  @override
-  Future<void> signOut() {
-    // TODO: implement signOut
-    throw UnimplementedError();
   }
 
   @override
@@ -46,14 +39,20 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     try {
       final response =
           await apiConsumer.post(EndPoints.register, body: params.toJson());
-
-      if (response != null && response is Map<String, dynamic>) {
+      if (response != null) {
         return SignUpResponse.fromJson(response);
+      } else {
+        throw Exception('Sign up failed.');
       }
     } catch (e) {
-      print('Error during sign-up: $e');
+      throw Exception('Failed to sign up: $e');
     }
+  }
 
-    return SignUpResponse(message: 'An error occurred', code: 500);
+  @override
+  Future<void> signOut() async {
+    try {} catch (e) {
+      throw Exception('Failed to sign out: $e');
+    }
   }
 }
