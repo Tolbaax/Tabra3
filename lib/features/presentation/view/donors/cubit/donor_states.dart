@@ -26,12 +26,3 @@ class AddDonorSuccess extends DonorStates {
 
 class AddDonorError extends DonorStates {}
 
-class GetDonorByAddressLoading extends DonorStates {}
-
-class GetDonorByAddressSuccess extends DonorStates {
-  final List<Donor> donor;
-
-  GetDonorByAddressSuccess({required this.donor});
-}
-
-class GetDonorByAddressError extends DonorStates {}

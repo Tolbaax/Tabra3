@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tabra3/features/data/models/donor_model.dart';
 import 'package:tabra3/features/domain/usecases/donor_usecase.dart';
 
 import '../../../../../core/params/add_case_params.dart';
@@ -10,6 +11,8 @@ class DonorCubit extends Cubit<DonorStates> {
   DonorCubit(this._donorUseCase) : super(DonorInitialState());
 
   static DonorCubit get(context) => BlocProvider.of(context);
+
+  List<Donor>? donors;
 
   Future<void> getAllDonors() async {
     emit(GetAllDonorLoading());
@@ -29,16 +32,6 @@ class DonorCubit extends Cubit<DonorStates> {
     result.fold(
       (l) => emit(AddDonorError()),
       (response) => emit(AddDonorSuccess(response: response)),
-    );
-  }
-
-  Future<void> getDonorByAddress(String address) async {
-    emit(GetDonorByAddressLoading());
-    final result = await _donorUseCase.getDonorByAddress(address);
-
-    result.fold(
-      (l) => emit(GetDonorByAddressError()),
-      (r) => emit(GetDonorByAddressSuccess(donor: r.result!)),
     );
   }
 }

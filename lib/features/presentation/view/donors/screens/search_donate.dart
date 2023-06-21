@@ -8,11 +8,10 @@ import 'package:tabra3/core/utils/app_strings.dart';
 import 'package:tabra3/core/utils/constants.dart';
 import 'package:tabra3/core/utils/media_query_values.dart';
 
-import '../../../../../core/functions/app_dialogs.dart';
 import '../../../components/custom_button.dart';
 import '../../../components/custom_text_filed.dart';
-import '../cubit/donor_cubit.dart';
-import '../cubit/donor_states.dart';
+import '../cubit/search_donate_cubit.dart';
+import '../cubit/search_donate_states.dart';
 
 class SearchDonate extends StatefulWidget {
   final String text;
@@ -36,8 +35,8 @@ class _SearchDonateState extends State<SearchDonate> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<DonorCubit, DonorStates>(
-      listener: (context,state){
+    return BlocConsumer<SearchDonateCubit, SearchDonateStates>(
+      listener: (context, state) {
         if (state is GetDonorByAddressSuccess) {
           navigateTo(context, Routes.searchDonateResult);
         }
@@ -132,8 +131,9 @@ class _SearchDonateState extends State<SearchDonate> {
                       child: CustomButton(
                         onTap: () async {
                           if (_formKey.currentState!.validate()) {
-                            await DonorCubit.get(context).getDonorByAddress(
-                                _addressController.text.trim());
+                            await SearchDonateCubit.get(context)
+                                .getDonorByAddress(
+                                    _addressController.text.trim());
                           }
                         },
                         text: AppStrings.searchDonate,

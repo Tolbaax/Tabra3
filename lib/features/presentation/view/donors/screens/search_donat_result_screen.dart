@@ -5,8 +5,8 @@ import 'package:tabra3/core/utils/app_strings.dart';
 import 'package:tabra3/features/data/models/donor_model.dart';
 
 import '../../../../../core/utils/app_colors.dart';
-import '../cubit/donor_cubit.dart';
-import '../cubit/donor_states.dart';
+import '../cubit/search_donate_cubit.dart';
+import '../cubit/search_donate_states.dart';
 import '../widgets/donor_card.dart';
 
 class SearchDonateResultScreen extends StatelessWidget {
@@ -27,7 +27,7 @@ class SearchDonateResultScreen extends StatelessWidget {
           ),
           title: Text(AppStrings.donors),
         ),
-        body: BlocConsumer<DonorCubit, DonorStates>(
+        body: BlocConsumer<SearchDonateCubit, SearchDonateStates>(
           listener: (context, state) {},
           builder: (context, state) {
             if (state is GetDonorByAddressLoading) {

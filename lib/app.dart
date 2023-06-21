@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tabra3/features/presentation/view/donors/cubit/donor_cubit.dart';
-import 'package:tabra3/features/presentation/view/home/cubit/home_cubit.dart';
-import 'package:tabra3/features/presentation/view/recipient/cubit/recipient_cubit.dart';
+import 'package:tabra3/features/presentation/view/donors/cubit/search_donate_cubit.dart';
 
 import 'config/routes/routes.dart';
 import 'config/themes/app_theme.dart';
 import 'core/services/injection_container.dart';
+import 'features/presentation/view/donors/cubit/donor_cubit.dart';
+import 'features/presentation/view/home/cubit/home_cubit.dart';
+import 'features/presentation/view/recipient/cubit/recipient_cubit.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -25,6 +26,8 @@ class MyApp extends StatelessWidget {
             ),
             BlocProvider(
                 create: (context) => sl<RecipientCubit>()..getAllRecipients()),
+            BlocProvider(
+                create: (context) => sl<SearchDonateCubit>()),
           ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,

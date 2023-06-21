@@ -14,6 +14,7 @@ import 'package:tabra3/features/domain/usecases/donor_usecase.dart';
 import 'package:tabra3/features/domain/usecases/recipient_usecase.dart';
 import 'package:tabra3/features/domain/usecases/urgent_case_usecase.dart';
 import 'package:tabra3/features/presentation/view/donors/cubit/donor_cubit.dart';
+import 'package:tabra3/features/presentation/view/donors/cubit/search_donate_cubit.dart';
 import 'package:tabra3/features/presentation/view/home/cubit/home_cubit.dart';
 import 'package:tabra3/features/presentation/view/login/cubit/login_cubit.dart';
 import 'package:tabra3/features/presentation/view/recipient/cubit/recipient_cubit.dart';
@@ -38,6 +39,7 @@ Future<void> init() async {
   sl.registerLazySingleton<HomeCubit>(() => HomeCubit(sl()));
   sl.registerLazySingleton<DonorCubit>(() => DonorCubit(sl()));
   sl.registerLazySingleton<RecipientCubit>(() => RecipientCubit(sl()));
+  sl.registerLazySingleton<SearchDonateCubit>(() => SearchDonateCubit(sl()));
 
   // Core
   sl.registerLazySingleton<ApiConsumer>(() => DioConsumer(client: sl()));
