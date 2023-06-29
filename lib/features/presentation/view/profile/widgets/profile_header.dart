@@ -14,6 +14,7 @@ class ProfileHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final name = sl<AuthLocalDataSource>().getUserName();
+    final phoneNumber = sl<AuthLocalDataSource>().getPhoneNumber();
 
     return Stack(
       alignment: Alignment.bottomCenter,
@@ -40,8 +41,12 @@ class ProfileHeader extends StatelessWidget {
                 height: 5.0,
               ),
               Text(
-                name! ?? '',
+                name!,
                 style: TextStyle(color: Colors.white, fontSize: 25.0),
+              ),
+              Text(
+                phoneNumber!,
+                style: TextStyle(color: Colors.white, fontSize: 15.0),
               ),
               SizedBox(
                 height: context.height * 0.015,

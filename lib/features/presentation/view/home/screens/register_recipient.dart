@@ -20,7 +20,6 @@ class RegisterRecipient extends StatefulWidget {
   State<RegisterRecipient> createState() => _RegisterRecipientState();
 }
 
-
 class _RegisterRecipientState extends State<RegisterRecipient> {
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
@@ -29,6 +28,7 @@ class _RegisterRecipientState extends State<RegisterRecipient> {
   final _bloodTypeController = TextEditingController();
   final _cityController = TextEditingController();
   final _bloodBagsController = TextEditingController();
+  final _phoneNumberController = TextEditingController();
 
   @override
   void dispose() {
@@ -38,6 +38,7 @@ class _RegisterRecipientState extends State<RegisterRecipient> {
     _bloodTypeController.dispose();
     _cityController.dispose();
     _bloodBagsController.dispose();
+    _phoneNumberController.dispose();
     super.dispose();
   }
 
@@ -97,6 +98,16 @@ class _RegisterRecipientState extends State<RegisterRecipient> {
                         height: context.height * 0.035,
                       ),
                       CustomTextFiled(
+                        controller: _phoneNumberController,
+                        hintText: AppStrings.phoneNumber,
+                        keyboardType: TextInputType.phone,
+                        validator: (value) =>
+                            Validators.validatePhoneNumber(value),
+                      ),
+                      SizedBox(
+                        height: context.height * 0.035,
+                      ),
+                      CustomTextFiled(
                         controller: _bloodTypeController,
                         hintText: AppStrings.bloodType,
                         validator: (value) => Validators.validateType(value),
@@ -129,6 +140,7 @@ class _RegisterRecipientState extends State<RegisterRecipient> {
                                 name: _nameController.text.trim(),
                                 age: _ageController.text.trim(),
                                 gender: _genderController.text.trim(),
+                                PhoneNumber: _phoneNumberController.text.trim(),
                                 bloodType: _bloodTypeController.text.trim(),
                                 city: _cityController.text.trim(),
                                 bloodBags: _bloodBagsController.text.trim(),

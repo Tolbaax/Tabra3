@@ -23,23 +23,27 @@ class UrgentCase {
   int? age;
   String? gender;
   String? bloodType;
+  String? phoneNumber;
   String? city;
   int? bloodBags;
 
-  UrgentCase(
-      {this.id,
-      this.name,
-      this.age,
-      this.gender,
-      this.bloodType,
-      this.city,
-      this.bloodBags});
+  UrgentCase({
+    this.id,
+    this.name,
+    this.age,
+    this.gender,
+    this.bloodType,
+    this.phoneNumber,
+    this.city,
+    this.bloodBags,
+  });
 
   UrgentCase.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     age = json['age'];
     gender = json['gender'];
+    phoneNumber = json['phoneNumber'];
     bloodType = json['bloodType'];
     city = json['city'];
     bloodBags = json['bloodBags'];
@@ -51,6 +55,7 @@ class UrgentCase {
     data['name'] = this.name;
     data['age'] = this.age;
     data['gender'] = this.gender;
+    data['phoneNumber'] = this.phoneNumber;
     data['bloodType'] = this.bloodType;
     data['city'] = this.city;
     data['bloodBags'] = this.bloodBags;

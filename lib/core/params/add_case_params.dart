@@ -7,6 +7,7 @@ class AddCaseParams extends Equatable {
   final String bloodType;
   final String city;
   final String bloodBags;
+  final String PhoneNumber;
 
   const AddCaseParams({
     required this.name,
@@ -15,6 +16,7 @@ class AddCaseParams extends Equatable {
     required this.bloodType,
     required this.city,
     required this.bloodBags,
+    required this.PhoneNumber,
   });
 
   Map<String, dynamic> toJson() => {
@@ -24,8 +26,17 @@ class AddCaseParams extends Equatable {
         "bloodType": bloodType,
         "city": city,
         "bloodBags": bloodBags,
+        "PhoneNumber": PhoneNumber,
       };
 
   @override
-  List<Object?> get props => [name, age, gender, bloodType, city, bloodBags];
+  List<Object?> get props => [
+        name,
+        age,
+        gender,
+        bloodType,
+        city,
+        bloodBags,
+        PhoneNumber,
+      ];
 }

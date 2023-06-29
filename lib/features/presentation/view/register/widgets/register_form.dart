@@ -22,12 +22,14 @@ class _RegisterFormState extends State<RegisterForm> {
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _phoneController = TextEditingController();
 
   @override
   void dispose() {
     _nameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
+    _phoneController.dispose();
     super.dispose();
   }
 
@@ -48,6 +50,16 @@ class _RegisterFormState extends State<RegisterForm> {
                 keyboardType: TextInputType.name,
                 textInputAction: TextInputAction.next,
                 validator: (value) => Validators.validateName(value),
+              ),
+              SizedBox(
+                height: 20.0.h,
+              ),
+              CustomTextFiled(
+                controller: _phoneController,
+                hintText: AppStrings.phoneNumber,
+                keyboardType: TextInputType.number,
+                textInputAction: TextInputAction.next,
+                validator: (value) => Validators.validatePhoneNumber(value),
               ),
               SizedBox(
                 height: 20.0.h,
@@ -79,6 +91,7 @@ class _RegisterFormState extends State<RegisterForm> {
                       SignUpParams(
                         name: _nameController.text.trim(),
                         email: _emailController.text.trim(),
+                        PhoneNumber: _phoneController.text.trim(),
                         password: _passwordController.text.trim(),
                       ),
                     );

@@ -26,6 +26,7 @@ class _RegisterUrgentCasesState extends State<RegisterUrgentCases> {
   final _bloodTypeController = TextEditingController();
   final _cityController = TextEditingController();
   final _bloodBagsController = TextEditingController();
+  final _phoneNumberController = TextEditingController();
 
   @override
   void dispose() {
@@ -35,6 +36,7 @@ class _RegisterUrgentCasesState extends State<RegisterUrgentCases> {
     _bloodTypeController.dispose();
     _cityController.dispose();
     _bloodBagsController.dispose();
+    _phoneNumberController.dispose();
     super.dispose();
   }
 
@@ -76,7 +78,17 @@ class _RegisterUrgentCasesState extends State<RegisterUrgentCases> {
                         controller: _genderController,
                         hintText: AppStrings.gender,
                         keyboardType: TextInputType.emailAddress,
-                        validator: (value)=>Validators.validateType(value),
+                        validator: (value) => Validators.validateType(value),
+                      ),
+                      SizedBox(
+                        height: context.height * 0.035,
+                      ),
+                      CustomTextFiled(
+                        controller: _phoneNumberController,
+                        hintText: AppStrings.phoneNumber,
+                        keyboardType: TextInputType.phone,
+                        validator: (value) =>
+                            Validators.validatePhoneNumber(value),
                       ),
                       SizedBox(
                         height: context.height * 0.035,
@@ -84,7 +96,7 @@ class _RegisterUrgentCasesState extends State<RegisterUrgentCases> {
                       CustomTextFiled(
                         controller: _bloodTypeController,
                         hintText: AppStrings.bloodType,
-                        validator: (value)=>Validators.validateType(value),
+                        validator: (value) => Validators.validateType(value),
                       ),
                       SizedBox(
                         height: context.height * 0.035,
@@ -92,7 +104,7 @@ class _RegisterUrgentCasesState extends State<RegisterUrgentCases> {
                       CustomTextFiled(
                         controller: _cityController,
                         hintText: AppStrings.city,
-                        validator: (value)=>Validators.validateType(value),
+                        validator: (value) => Validators.validateType(value),
                       ),
                       SizedBox(
                         height: context.height * 0.035,
@@ -114,6 +126,7 @@ class _RegisterUrgentCasesState extends State<RegisterUrgentCases> {
                                 name: _nameController.text.trim(),
                                 age: _ageController.text.trim(),
                                 gender: _genderController.text.trim(),
+                                PhoneNumber: _phoneNumberController.text.trim(),
                                 bloodType: _bloodTypeController.text.trim(),
                                 city: _cityController.text.trim(),
                                 bloodBags: _bloodBagsController.text.trim(),

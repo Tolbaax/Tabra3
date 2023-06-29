@@ -49,6 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     uid: result.token.toString(),
                     name: result.name.toString(),
                     email: result.email.toString(),
+                    phoneNumber: result.phoneNumber.toString(),
                   )
                   .then((value) => navigateAndRemove(context, Routes.layout));
             } else {

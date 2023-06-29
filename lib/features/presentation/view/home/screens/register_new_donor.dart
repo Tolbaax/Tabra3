@@ -28,6 +28,7 @@ class _RegisterNewDonorState extends State<RegisterNewDonor> {
   final _bloodTypeController = TextEditingController();
   final _cityController = TextEditingController();
   final _bloodBagsController = TextEditingController();
+  final _phoneNumberController = TextEditingController();
 
   @override
   void dispose() {
@@ -37,6 +38,7 @@ class _RegisterNewDonorState extends State<RegisterNewDonor> {
     _bloodTypeController.dispose();
     _cityController.dispose();
     _bloodBagsController.dispose();
+    _phoneNumberController.dispose();
     super.dispose();
   }
 
@@ -96,6 +98,16 @@ class _RegisterNewDonorState extends State<RegisterNewDonor> {
                         height: context.height * 0.035,
                       ),
                       CustomTextFiled(
+                        controller: _phoneNumberController,
+                        hintText: AppStrings.phoneNumber,
+                        keyboardType: TextInputType.phone,
+                        validator: (value) =>
+                            Validators.validatePhoneNumber(value),
+                      ),
+                      SizedBox(
+                        height: context.height * 0.035,
+                      ),
+                      CustomTextFiled(
                         controller: _bloodTypeController,
                         hintText: AppStrings.bloodType,
                         validator: (value) => Validators.validateType(value),
@@ -128,6 +140,7 @@ class _RegisterNewDonorState extends State<RegisterNewDonor> {
                                 name: _nameController.text.trim(),
                                 age: _ageController.text.trim(),
                                 gender: _genderController.text.trim(),
+                                PhoneNumber: _phoneNumberController.text.trim(),
                                 bloodType: _bloodTypeController.text.trim(),
                                 city: _cityController.text.trim(),
                                 bloodBags: _bloodBagsController.text.trim(),

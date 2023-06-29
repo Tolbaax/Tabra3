@@ -71,6 +71,11 @@ class DonorCard extends StatelessWidget {
                             creationDate,
                             style: Theme.of(context).textTheme.labelLarge,
                           ),
+                          if (model.phoneNumber != '0')
+                            Text(
+                              '${model.phoneNumber}',
+                              style: Theme.of(context).textTheme.labelLarge,
+                            ),
                         ],
                       ),
                       const Spacer(),

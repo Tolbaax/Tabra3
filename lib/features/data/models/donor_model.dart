@@ -38,6 +38,7 @@ class Donor {
   bool? isDeleted;
   String? creationDate;
   String? modifiedDate;
+  String? phoneNumber;
 
   Donor(
       {this.id,
@@ -49,6 +50,7 @@ class Donor {
         this.isActive,
         this.isDeleted,
         this.creationDate,
+        this.phoneNumber,
         this.modifiedDate});
 
   Donor.fromJson(Map<String, dynamic> json) {
@@ -59,6 +61,7 @@ class Donor {
     bloodType = json['bloodType'];
     city = json['city'];
     isActive = json['isActive'];
+    phoneNumber = json['phoneNumber'];
     isDeleted = json['isDeleted'];
     creationDate = json['creationDate'];
     modifiedDate = json['modifiedDate'];
@@ -73,6 +76,7 @@ class Donor {
     data['bloodType'] = this.bloodType;
     data['city'] = this.city;
     data['isActive'] = this.isActive;
+    data['phoneNumber'] = this.phoneNumber;
     data['isDeleted'] = this.isDeleted;
     data['creationDate'] = this.creationDate;
     data['modifiedDate'] = this.modifiedDate;

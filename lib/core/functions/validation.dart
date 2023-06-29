@@ -26,6 +26,20 @@ class Validators {
     return null;
   }
 
+
+  static String? validatePhoneNumber(String value) {
+    if (value.isEmpty) {
+      return 'رقم الهاتف لا يمكن أن يكون فارغًا';
+    }
+
+    if (value.length < 11) {
+      return 'يجب أن يتكون رقم الهاتف من 11 رقم ع الاقل';
+    } else if (value.length > 11) {
+      return 'لا يمكن أن رقم الهاتف اكثر من 11 رقم';
+    }
+    return null;
+  }
+
   static String? validateType(String value) {
     if (value.isEmpty) {
       return 'النوع لا يمكن أن يكون فارغًا';
@@ -41,6 +55,8 @@ class Validators {
 
     return null;
   }
+
+
 
   static String? validateEmail(String value) {
     if (value.isEmpty) {

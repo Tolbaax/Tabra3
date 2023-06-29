@@ -3,7 +3,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../core/utils/app_strings.dart';
 
 abstract class AuthLocalDataSource {
-  Future<void> setUserLoggedIn({String uid, String name, String email});
+  Future<void> setUserLoggedIn({
+    String uid,
+    String name,
+    String email,
+    String phoneNumber,
+  });
 
   Future<void> removeUser();
 
@@ -12,6 +17,8 @@ abstract class AuthLocalDataSource {
   String? getUserName();
 
   String? getUserEmail();
+
+  String? getPhoneNumber();
 }
 
 class AuthLocalDataSourceImpl implements AuthLocalDataSource {
@@ -21,10 +28,11 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
 
   @override
   Future<void> setUserLoggedIn(
-      {String? uid, String? name, String? email}) async {
+      {String? uid, String? name, String? email,String? phoneNumber}) async {
     await preferences.setString(AppStrings.uID, uid!);
     await preferences.setString(AppStrings.name, name!);
     await preferences.setString(AppStrings.email, email!);
+    await preferences.setString(AppStrings.phoneNumber, phoneNumber!);
   }
 
   @override
@@ -42,4 +50,7 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
 
   @override
   String? getUserEmail() => preferences.getString(AppStrings.email);
+
+  @override
+  String? getPhoneNumber() => preferences.getString(AppStrings.phoneNumber);
 }
